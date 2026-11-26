@@ -1,0 +1,6 @@
+1. **Define explicit real-world data:** Use fixed pairs of hours studied ($x \in \mathbb{R}$) and pass/fail outcomes ($y \in \{0, 1\}$) with no random generators or external files, so learners see exact inputs and targets.
+2. **Compute the linear combination:** Calculate the weighted sum and bias $z = w \cdot x + b$, where $w$ scales input influence and $b$ shifts the decision boundary along the input axis.
+3. **Apply a non-linear activation:** Pass $z$ through the Sigmoid function $\sigma(z) = \frac{1}{1 + e^{-z}}$ to map any real number into a probability-like output in $(0, 1)$ for binary classification.
+4. **Measure classification error:** Use Binary Cross-Entropy loss $\mathcal{L}(y, \hat{y}) = -\bigl[y \ln(\hat{y}) + (1 - y)\ln(1 - \hat{y})\bigr]$ to measure how far predicted probabilities $\hat{y}$ are from actual labels $y$.
+5. **Train via backpropagation and gradient descent:** Compute gradients $\frac{\partial \mathcal{L}}{\partial w}$ and $\frac{\partial \mathcal{L}}{\partial b}$ and update parameters as $\theta \leftarrow \theta - \eta \nabla_\theta \mathcal{L}$ with learning rate $\eta$ on CPU.
+6. **Threshold predictions into classes:** Convert predicted probabilities $\hat{y}$ into discrete classes using $\hat{y} \ge 0.5 \implies 1$ (Pass) and $\hat{y} < 0.5 \implies 0$ (Fail) on unseen study hours.
